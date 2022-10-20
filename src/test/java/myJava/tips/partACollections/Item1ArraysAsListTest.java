@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-class Item1arraysAsListTest {
+class Item1ArraysAsListTest {
 
 	@Test
 	void should_work_as_view_test() {
@@ -16,7 +16,7 @@ class Item1arraysAsListTest {
 		List<String> view = Arrays.asList(values);
 		assertArrayEquals(new String[]{"a", "c"}, values);
 		assertEquals(List.of("a", "c"),  view);
-		// update initial array
+		// updating initial array
 		values[1] = "b";
 		assertArrayEquals(new String[]{"a", "b"}, values);
 		assertEquals(List.of("a", "b"),  view);
@@ -27,7 +27,7 @@ class Item1arraysAsListTest {
 		// init
 		String[] values = {"a", "c"};
 		List<String> view = Arrays.asList(values);
-		// update list
+		// updating resulted list
 		view.set(1, "b");
 		assertArrayEquals(new String[]{"a", "b"}, values);
 		assertEquals(List.of("a", "b"),  view);
