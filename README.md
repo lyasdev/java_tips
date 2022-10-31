@@ -4,7 +4,10 @@ I'll do my best to discuss one and only one thing per item, but sometimes, I hav
 and differences between discussed subject. let's get started.
 
 Part A:
-  In this part, we are going to see some tips about using Java Collections Framework.
+  The main lack in Java Collections Framework is a clear separation between mutable and immutable collections in the API level,
+  this separation is left to implementation details. This lack has the following consequences: we have to dig in implementation details to 
+  know what is collection's type, worst, a code that works fine in a given version may break at execution time in a next version (it still 
+  compiles). In this part, we are going to see some tips about Collections and ways to avoid bugs like those mentioned earlier.
 
 Item 1: Arrays.asList:
  - This utility method gives us a view on the original Array which can be used as List. The term view here is very important because 
@@ -19,5 +22,10 @@ Item 1: Arrays.asList:
   UnsupportedOperaionException on the execution).
   
  Item 3: List.of:
-  - This utility method allows us to create an immutable list. An immutable list, unlike unmodifiable list, cannot be modified (updated or resized) once created 
+  - This utility method allows to create an immutable List. An immutable List, unlike unmodifiable List, cannot be modified (updated or resized) once created 
   either we have a reference to it or not. Any attempt of modifying the List will result in UnsupportedOperaionException at execution time.
+  
+  Item 4: List.copyOf:
+  - This utility method allows to create an immutable list. unlike List.of which always creates a new List, copyOf is optimized in the sense that: if the passed List is mutable, 
+  it creates a new List and copy all the elements of the passed List into the new one, if the passed List is immutable, copyOf does not create a new List it just returns a reference
+  to the passed List. Any attempt of modifying the List will result in UnsupportedOperaionException at execution time.
