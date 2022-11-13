@@ -16,16 +16,17 @@ Item 1: Arrays.asList:
   it as List, note that same rules applied to Arrays are applied to resulted List: updating objects of the resulted List in the array range is allowed 
   and resizing the List is not allowed (the code compiles but we get UnsupportedOperaionException on the execution).
   
- Item 2: Collections.unmodifiableList:
-  - This utility method gives us a view ( any chage in the original List is reflected in the resulted List) on the original List.
-  - The resulted List is unmodifiable ie: updating objects of the resulted List or resizing it is not allowed (the code compiles but we get 
+ Item 2: Collections.unmodifiableList, Collections.unmodifiableSet, Collections.unmodifiableMap:
+  - This utility method gives us a view ( any chage in the original Collection is reflected in the resulted Collection) on the original Collection.
+  - The resulted Collection is unmodifiable ie: updating objects of the resulted Collection or resizing it is not allowed (the code compiles but we get 
   UnsupportedOperaionException on the execution).
   
- Item 3: List.of:
-  - This utility method allows to create an immutable List. An immutable List, unlike unmodifiable List, cannot be modified (updated or resized) once created 
-  either we have a reference to it or not. Any attempt of modifying the List will result in UnsupportedOperaionException at execution time.
+ Item 3: List.of, Set.of, Map.of:
+  - This utility method allows to create an immutable Collection. An immutable Collection, unlike unmodifiable Collection, cannot be modified (updated or resized) once created 
+  either we have a reference to it or not(see the item 2 to understand how to modify an unmodifiableList by holding a reference to the initial object). Any attempt of modifying the Collection 
+  will result in UnsupportedOperaionException at execution time.
   
-  Item 4: List.copyOf:
-  - This utility method allows to create an immutable list. unlike List.of which always creates a new List, copyOf is optimized in the sense that: if the passed List is mutable, 
-  it creates a new List and copy all the elements of the passed List into the new one, if the passed List is immutable, copyOf does not create a new List it just returns a reference
-  to the passed List. Any attempt of modifying the List will result in UnsupportedOperaionException at execution time.
+  Item 4: List.copyOf, Set.copyOf, Map.copyOf:
+  - This utility method allows to create an immutable Collection. unlike List.of, Set.of and Map.of which always create a new Collection, copyOf is optimized in the sense that: if the passed Collection is mutable, 
+  it creates a new Collection and copy all the elements of the passed Collection into the new one, if the passed Collection is immutable, copyOf does not create a new Collection it just returns a reference
+  to the passed Collection. Any attempt of modifying the Collection created by copyOf will result in UnsupportedOperaionException at execution time.
